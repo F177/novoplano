@@ -100,7 +100,7 @@ Modelos marcados "candidato" ainda não foram validados; a escolha final sai das
 
 - **Métrica de decisão:** preferência cega em pares de Shorts inteiros, julgada pelo fundador. Regra: excluindo empates, a versão nova precisa vencer **pelo menos 15 de 20** pares (teste do sinal unilateral, p ≈ 0,02). 12 a 14 vitórias é inconclusivo: só fica se for mais barato ou mais simples.
 - **Portões:** taxa de publicação por rótulo humano. Portão 1: ≥ 50% no dev. Portão 2: ≥ 70% no holdout, rotulado pelo fundador e por pelo menos um voluntário. Nunca `any_flag_rate`.
-- **Conjunto Shorts-40** (`evals/sets/shorts40.json`): 40 Shorts com direito de uso registrado, splits dev 20 / holdout 10 / exame selado 10, estratificados por tipo de conteúdo, número de locutores, velocidade de fala, música e sotaque.
+- **Conjunto Shorts-40** (`evals/sets/shorts40.json`): 40 Shorts  splits dev 20 / holdout 10 / exame selado 10, estratificados por tipo de conteúdo, número de locutores, velocidade de fala, música e sotaque.
 - **Métricas automáticas** servem para triagem e escolha de candidatos, nunca para decidir o que entra. Nunca use a mesma métrica para controlar e para medir.
 - **Nunca ajuste um limiar contra um vídeo só.** Todos os limiares começam marcados como "não calibrado".
 - Rótulos humanos em `evals/human_labels/` valem mais que qualquer juiz. O juiz por LLM (`/ciclo`) é ferramenta de desenvolvimento, fora do caminho de geração, nunca sobre upload de cliente.

@@ -26,7 +26,7 @@ Estrutura conforme `CLAUDE.md`, `pyproject.toml` (ruff, pytest), `Makefile`, `.e
 Porte do repo anterior (`F177/novoaudio@6e56281`), cada arquivo com os seus testes:
 - `packages/ptbr/normalize.py`, `packages/ptbr/syllables.py`
 - `packages/pipeline/subtitles.py`, `scorecard.py`, `report.py` (adaptados ao tipo `Line`)
-- `scripts/listen.py`, `scripts/r2.py`, `scripts/pod_runner.py` (com o fix de upload que apaga o destino remoto)
+- `scripts/r2.py`, `scripts/pod_runner.py` (com o fix de upload que apaga o destino remoto). `scripts/listen.py` foi para a T0.4: depende da máquina do `/ciclo` e do formato de segmentos do `dub.py` antigo.
 - `evals/` inteiro: `golden/`, `languages/`, `taxonomy.json`, `human_labels/`, `calibration/`, `ledger.md`
 - `.claude/` inteiro (agents, hooks, `skills/ciclo`), sem alterar a lógica; a adaptação é a T3.2
 
@@ -34,20 +34,18 @@ Não porte: nada de MOSS, OPUS-MT, Demucs, `segmentation.py`, `budget.py`, `pros
 
 **Aceite:** `make lint && make test` verde. `grep -ri "moss\|opus-mt\|demucs\|MIN_SYNTHESIS_SECONDS"` em `packages/` e `scripts/` volta vazio. README de uma linha apontando o repo anterior como referência congelada.
 
-### T0.2 — Registro de licenças e de decisões 🤝
-`docs/licencas.md`: uma linha por modelo e dataset candidato (nome, revisão, licença, uso comercial sim/não, URL, data da verificação). `docs/decisoes.md`: as decisões de 2026-10-10 e 2026-10-11 do `CLAUDE.md`.
+### T0.2 — Excluido, passse para o 50.3
 
-**Aceite:** todo modelo citado na tabela do pipeline do `CLAUDE.md` tem linha. Lista de excluídos explícita (Fish Audio S2 Pro, pesos do Voxtral TTS, Hibiki-Zero, IndexTTS2/2.5, pesos do F5-TTS, XTTS-v2). Linhas "Verificar" ficam bloqueadas até verificação.
 
 ### T0.3 — Conjunto Shorts-40, começando pelos 20 de dev 👤
-`evals/sets/shorts40.json`: por Short, id, fonte, prova de direito de uso (gravação própria, CC-BY, criador que autorizou), estrato, número de locutores, velocidade de fala, nível de música, sotaque, split.
+`evals/sets/shorts40.json`: por Short, id, fonte, estrato, número de locutores, velocidade de fala, nível de música, sotaque, split.
 
 Estratos para os 40: entrevista/podcast 6, streamer/gaming 5, reação/comentário 5, comédia/meme 5, educação/motivação 5, entrevista de rua 4, casos extremos 4 (menos de 5 s de fala, discussão com sobreposição, sussurro ou grito), esportes 3, vlog com música 3.
 
 **Aceite:** 20 Shorts de dev com direito registrado, incluindo os 5 já rotulados. Pelo menos 8 com dois ou mais locutores e 6 rápidos. Holdout e exame podem ser completados até o Portão 1.
 
 ### T0.4 — Escuta cega em pares 🤖
-`scripts/listen.py` ganha o modo `pares`: duas versões do mesmo Short em ordem aleatória, nomes escondidos, um par duplicado oculto por sessão, rótulos em JSONL (preferido ou empate, "publicaria" sim/não, e para o pior lado a fala e uma classe de motivo da `taxonomy.json`). `scripts/sign_test.py` aplica a regra 15 de 20.
+`scripts/listen.py`, escrito do zero sobre Short e `Line` (o do repo anterior serve só de referência para o servidor local e a página), com o modo `pares`: duas versões do mesmo Short em ordem aleatória, nomes escondidos, um par duplicado oculto por sessão, rótulos em JSONL (preferido ou empate, "publicaria" sim/não, e para o pior lado a fala e uma classe de motivo da `taxonomy.json`). `scripts/sign_test.py` aplica a regra 15 de 20.
 
 **Aceite:** testes do sorteio, do par duplicado e da regra (15/20 → vence, 12–14 → inconclusivo, empates excluídos). Uma sessão de 20 pares cabe em 40 minutos no celular.
 
