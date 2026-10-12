@@ -11,7 +11,6 @@ Backlog em ordem de execução. Cada tarefa é uma sessão de Claude Code e um P
 - Não comece a próxima tarefa antes dos critérios de aceite da atual passarem.
 - Diff acima de ~400 linhas: a tarefa estava mal fatiada. Pare e quebre.
 - Toda escolha de modelo vai para `docs/decisoes.md` com os números que a justificam.
-- Todo modelo ou dataset passa por `docs/licencas.md` antes de ser testado.
 - Diga o custo de GPU antes de rodar. Desligue o Pod ao fim da sessão.
 
 ---
