@@ -1,0 +1,73 @@
+{
+  "par": "en-pt-BR",
+  "idioma_fonte": "en",
+  "idioma_alvo": "pt-BR",
+  "nota": "Conjunto fixo de avaliação do ciclo de qualidade. 'video' é o nome do diretório em .cache/dub/; 'fonte' é o argumento de scripts/dub.py. Splits: 'dev' (o analista vê), 'holdout' (aceite de cada ciclo; analista e implementador não veem), 'exame' (selado, só em marcos com /ciclo marco). Preencha 'categoria'. Com 20 Shorts: ~12 dev, ~5 holdout, ~3 exame. Shorts novos, de preferência amostrados do que clippers realmente sobem, entram no holdout ou no exame; holdout gasto pode virar dev; nunca o contrário.",
+  "elegibilidade": {
+    "min_shorts": 3,
+    "min_categorias": 2
+  },
+  "calibracao": {
+    "min_n": 5,
+    "min_precisao": 0.7,
+    "min_recall": 0.6,
+    "ruido_padrao": 0.15
+  },
+  "aceite": {
+    "tolerancia_abs": 1,
+    "tolerancia_rel": 0.1,
+    "cer_final_margem": 0.02,
+    "descarte_margem_rel": 0.1,
+    "custo_margem_rel": 0.1,
+    "custo_margem_abs_s": 2.0
+  },
+  "higiene": {
+    "max_usos_holdout": 8
+  },
+  "shorts": [
+    {
+      "video": "YTDown.com_Shorts_Media_mS13Z_za4t0_Streamer-Is-Ignoring-20-000-Worth-of-DEBT_002_720p",
+      "fonte": "videos/original/YTDown.com_Shorts_Media_mS13Z_za4t0_Streamer-Is-Ignoring-20-000-Worth-of-DEBT_002_720p.mp4",
+      "categoria": "streamer",
+      "tags": [
+        "dialogo-rapido",
+        "2-locutores",
+        "palavrao"
+      ],
+      "split": "dev",
+      "apelido": "streamer-divida"
+    },
+    {
+      "video": "YTDown.com_Shorts_Media_KchSfOdwCJE_The-Ironic-Tragedy-Of-Life-Matthew-Mcconaughey_001_720p",
+      "fonte": "videos/original/YTDown.com_Shorts_Media_KchSfOdwCJE_The-Ironic-Tragedy-Of-Life-Matthew-Mcconaughey_001_720p.mp4",
+      "categoria": "podcast",
+      "tags": [],
+      "split": "dev",
+      "apelido": "mcconaughey-ironia"
+    },
+    {
+      "video": "YTDown.com_Shorts_Media_qSZWnmCwlyo_The-Difference-Is-Rarely-Talent-It-s-What-You-Choose-To-Focus-On-Jay-Shetty-Char_002_720p",
+      "fonte": "videos/original/YTDown.com_Shorts_Media_qSZWnmCwlyo_The-Difference-Is-Rarely-Talent-It-s-What-You-Choose-To-Focus-On-Jay-Shetty-Char_002_720p.mp4",
+      "categoria": "podcast",
+      "tags": [],
+      "split": "dev",
+      "apelido": "jay-shetty-fortes-fracos"
+    },
+    {
+      "video": "YTDown.com_Shorts_Media_zSVDFl2hV8E_The-Power-of-Being-Calm_002_720p",
+      "fonte": "videos/original/YTDown.com_Shorts_Media_zSVDFl2hV8E_The-Power-of-Being-Calm_002_720p.mp4",
+      "categoria": "podcast",
+      "tags": [],
+      "split": "dev",
+      "apelido": "poder-da-calma"
+    },
+    {
+      "video": "YTDown.com_Shorts_Media_Q0BOH_s9gSU_Such-a-great-quote-shorts_002_720p",
+      "fonte": "videos/original/YTDown.com_Shorts_Media_Q0BOH_s9gSU_Such-a-great-quote-shorts_002_720p.mp4",
+      "categoria": "podcast",
+      "tags": [],
+      "split": "dev",
+      "apelido": "christian-bale-citacao"
+    }
+  ]
+}
