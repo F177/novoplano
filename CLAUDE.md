@@ -30,6 +30,7 @@ Toda decisão nova entra em `docs/decisoes.md` com data, alternativas e evidênc
 - **2026-10-11 — Voz por biblioteca.** Cada locutor recebe uma voz da biblioteca própria por casting automático. Clonagem do locutor original fica fora do escopo até decisão explícita.
 - **2026-10-11 — A fala é a unidade.** Tradução, síntese e revisão acontecem por fala (linha de diálogo) com janela de tempo flexível, não por segmento delimitado por pausa.
 - **2026-10-11 — Short inteiro de uma vez.** Um contexto de LLM por Short, um elenco por Short, um solver de timing por Short.
+- **2026-10-12 — Licença não bloqueia, por enquanto.** O projeto é pessoal, privado e não comercial. Modelos e datasets com licença não comercial ou de pesquisa podem ser testados e adotados. A licença de cada um continua registrada, e antes de qualquer uso comercial todos os não comerciais são revistos e trocados.
 
 ## Invariantes de arquitetura (não viole sem me perguntar)
 
@@ -40,7 +41,7 @@ Toda decisão nova entra em `docs/decisoes.md` com data, alternativas e evidênc
 5. **Editar uma fala não altera as vizinhas automaticamente.** Mostre o impacto, não conserte sozinho.
 6. **`org_id` em toda tabela de domínio**, desde o primeiro dia. Toda query filtra por ele.
 7. **Nada de GPU ociosa fora de uso ativo.** Produção em RunPod Serverless (cobrança por segundo, escala a zero). Desenvolvimento em Pod via SSH, desligado ao fim de cada sessão. Shorts são processados em lote por carregamento de modelo.
-8. **Licença antes de teste.** Nenhum modelo ou dataset entra em experimento sem linha em `docs/licencas.md` com licença comercial verificada, URL e data.
+8. **Licença registrada, não bloqueante.** Todo modelo ou dataset adotado tem a licença anotada (nome, URL, comercial sim/não) na entrada de `docs/decisoes.md` que o adota. Não comercial é permitido enquanto o projeto for pessoal (decisão de 2026-10-12).
 9. **Marca d'água em todo áudio gerado** antes de chegar a qualquer pessoa de fora. Nenhum caminho de export pula a marca.
 10. **`packages/` é puro**: sem rede, sem banco, sem framework. Recebe dados, devolve dados, testável sem GPU.
 11. **Idioma é dado** (`evals/languages/`, `evals/golden/en-<idioma>.json`, `TargetLanguage`). Nunca `if idioma == ...` em lógica compartilhada.
@@ -85,7 +86,7 @@ Modelos marcados "candidato" ainda não foram validados; a escolha final sai das
 
 **Paralelo:** separação junto com sondagem de vídeo; ASR, diarização e tags no stem de diálogo; roteiro junto com casting; todas as falas × candidatos na síntese e no crítico. **Sequencial:** timing depois de todas as falas escolhidas; mix depois do timing; render por último.
 
-**Fora da lista de candidatos (licença não comercial ou exige acordo):** Fish Audio S2 Pro, pesos do Voxtral TTS, Hibiki-Zero, IndexTTS2/2.5 sem acordo com a bilibili, pesos do F5-TTS, XTTS-v2.
+**Licença não comercial ou que exige acordo (permitidos enquanto o projeto for pessoal; trocar antes de comercializar):** Fish Audio S2 Pro, pesos do Voxtral TTS, Hibiki-Zero, IndexTTS2/2.5, pesos do F5-TTS, XTTS-v2, pesos do Breeze TTS, AuK (pelo encoder Qwen2.5-Omni-3B).
 
 ## Biblioteca de vozes (elenco)
 
@@ -151,7 +152,7 @@ Modelos marcados "candidato" ainda não foram validados; a escolha final sai das
                     r2.py, eval_*.py
 /assets/voices/library   Biblioteca de vozes
 /evals              golden, languages, taxonomy, human_labels, calibration, sets, ledger.md
-/docs               decisoes.md, licencas.md
+/docs               decisoes.md
 /migrations         SQL versionado
 /runpod             Endpoints Serverless: audio, llm, tts (Fase 4)
 /.claude            agents, hooks, skills/ciclo
@@ -190,7 +191,6 @@ Estas coisas vão parecer urgentes. Não são. Não implemente sem eu pedir expl
 - App mobile, API pública, webhooks, integrações
 - Gestão de times, papéis, permissões granulares
 - Treino de modelo grande, modelo de áudio-linguagem próprio, ou qualquer treino com filmes e dublagens sem licença
-- Qualquer modelo fora de `docs/licencas.md`
 - Dashboard de analytics além do básico
 
 ## Convenções
